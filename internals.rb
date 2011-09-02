@@ -1,9 +1,14 @@
 module Internals
+  #
   # You can do `Object.send :include, Internals`
   # Then you can call `.contents` on anything.
   #
-  # the `contents` method returns a hash with information about the receiver
+  # The `contents` method returns a hash with information about the receiver
   # including its Class, the Constants and instance_methods defined inside it.
+  #
+  # The "depth" parameter indicates how deeply it should inspect the object.
+  # By default there is no depth limit. Pass in 1 to just get info on the object itself.
+  #
 
   def contents(depth = 0)
 
