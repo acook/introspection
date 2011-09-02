@@ -1,4 +1,10 @@
 module Internals
+  # You can do `Object.send :include, Internals`
+  # Then you can call `.contents` on anything.
+  #
+  # the `contents` method returns a hash with information about the receiver
+  # including its Class, the Constants and instance_methods defined inside it.
+
   def contents(depth = 0)
 
     if self.kind_of?(Module) && ![Object, Module, Class, BasicObject, Kernel].include?(self)
