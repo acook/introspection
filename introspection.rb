@@ -1,8 +1,8 @@
 #
-# You can do `Object.send :include, Internals`
-# Then you can call `.contents` on anything.
+# You can do `Object.send :include, Introspection`
+# Then you can call `.introspect` on anything.
 #
-# The `contents` method returns a hash with information about the receiver
+# The `introspect` method returns a hash with information about the receiver
 # including its Class, the Constants and instance_methods defined inside it.
 #
 # The "depth" parameter indicates how deeply it should inspect the object.
