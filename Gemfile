@@ -4,6 +4,9 @@ group :test do
   gem 'rspec'
 
   gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-stack_explorer'
+  gem 'pry-coolline'
   gem 'open4'
 
   gem 'growl'
