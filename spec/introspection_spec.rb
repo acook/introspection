@@ -24,11 +24,8 @@ describe Introspection do
       it 'gives the object heirarchy from the caller up to BasicObject' do
         ancestors = [
           Object,
-          RSpec::Mocks::Methods,
           Introspection,
           PP::ObjectMixin,
-          RSpec::Core::SharedExampleGroup,
-          RSpec::Core::DSL,
           Kernel,
           BasicObject
         ]
@@ -53,11 +50,8 @@ describe Introspection do
         pending 'functionality currently broken'
         ancestors = [
           Object,
-          RSpec::Mocks::Methods,
           Introspection,
           PP::ObjectMixin,
-          RSpec::Core::SharedExampleGroup,
-          RSpec::Core::DSL,
           Kernel,
           BasicObject
         ]
