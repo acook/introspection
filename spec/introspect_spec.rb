@@ -2,23 +2,20 @@ require_relative 'spec_helper'
 require 'introspect'
 
 describe Introspect do
-  specify { Introspect.should be_a(Module) }
+  specify { expect(Introspect).to be_a Module }
 
   specify 'classes that include it get an "introspect" method'  do
     class ClassThatIncludesIntrospect; include Introspect; end
-    ClassThatIncludesIntrospect.new.should respond_to(:introspect)
+    expect(ClassThatIncludesIntrospect.new).to respond_to :introspect
   end
 
   describe :introspect do
     context 'on classes' do
-      before do
-        class Foo; extend Introspect; end
-        @klass = Foo
-        @results = @klass.introspect
-      end
+      let(:klass){ class Foo; extend Introspect; end }
+      let(:contents){ klass.introspect }
 
       it 'gives the object class' do
-        @results[@klass].should be
+        expect(contents[klass]).to be
       end
 
       it 'gives the object heirarchy from the caller up to BasicObject' do
@@ -29,7 +26,7 @@ describe Introspect do
           BasicObject
         ]
 
-        @results[@klass][:ancestors].should == ancestors
+        expect(contents[klass][:ancestors]).to eq ancestors
       end
     end
 
@@ -39,7 +36,7 @@ describe Introspect do
       let(:contents){ instance.introspect }
 
       it 'gives the object class' do
-        contents[instance].should respond_to(:[])
+        expect(contents[instance]).to respond_to(:[])
       end
 
       it 'gives the object heirarchy from the caller up to BasicObject' do
@@ -52,7 +49,7 @@ describe Introspect do
           BasicObject
         ]
 
-        contents[instance][:ancestors].should == ancestors
+        expect(contents[instance][:ancestors]).to eq ancestors
       end
     end
   end
