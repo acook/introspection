@@ -54,11 +54,13 @@ module Introspect
       self.instance_methods(false).each do |m|
         @instance_methods << self.instance_method(m)
       end
+    else
+      @ancestors = self.class.ancestors
     end
 
     structure = Hash.new
     structure[:class] = self.class
-    structure[:ancestors] = @ancestors unless @ancestors.nil? || @ancestors.length <= 1
+    structure[:ancestors] = @ancestors unless @ancestors.nil? || @ancestors.empty?
     structure[:constants] = @constants unless @constants.nil? || @constants.empty?
     structure[:methods] = @methods unless @methods.nil? || @methods.empty?
     structure[:instance_methods] = @instance_methods unless @instance_methods.nil? || @instance_methods.empty?

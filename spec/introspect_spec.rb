@@ -34,28 +34,25 @@ describe Introspect do
     end
 
     context 'on instances' do
-      before do
-        class Foo; include Introspect; end
-        @klass = Foo
-        @instance = @klass.new
-        @results = @instance.introspect
-      end
+      let(:klass){ class Foo; include Introspect; end }
+      let(:instance){ klass.new }
+      let(:contents){ instance.introspect }
 
       it 'gives the object class' do
-        @results[@instance].should respond_to(:[])
+        contents[instance].should respond_to(:[])
       end
 
       it 'gives the object heirarchy from the caller up to BasicObject' do
-        pending 'functionality currently broken'
         ancestors = [
-          Object,
+          klass,
           Introspect,
+          Object,
           PP::ObjectMixin,
           Kernel,
           BasicObject
         ]
 
-        @results[@instance][:ancestors].should == ancestors
+        contents[instance][:ancestors].should == ancestors
       end
     end
   end
