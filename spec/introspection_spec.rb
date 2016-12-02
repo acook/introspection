@@ -1,18 +1,18 @@
 require_relative 'spec_helper'
 require 'introspection'
 
-describe Introspection do
-  specify { Introspection.should be_a(Module) }
+describe Introspect do
+  specify { Introspect.should be_a(Module) }
 
   specify 'classes that include it get an "introspect" method'  do
-    class ClassThatIncludesIntrospection; include Introspection; end
-    ClassThatIncludesIntrospection.new.should respond_to(:introspect)
+    class ClassThatIncludesIntrospect; include Introspect; end
+    ClassThatIncludesIntrospect.new.should respond_to(:introspect)
   end
 
   describe :introspect do
     context 'on classes' do
       before do
-        class Foo; include Introspection; end
+        class Foo; include Introspect; end
         @klass = Foo
         @results = @klass.introspect
       end
@@ -24,7 +24,7 @@ describe Introspection do
       it 'gives the object heirarchy from the caller up to BasicObject' do
         ancestors = [
           Object,
-          Introspection,
+          Introspect,
           PP::ObjectMixin,
           Kernel,
           BasicObject
@@ -36,7 +36,7 @@ describe Introspection do
 
     context 'on instances' do
       before do
-        class Foo; include Introspection; end
+        class Foo; include Introspect; end
         @klass = Foo
         @instance = @klass.new
         @results = @instance.introspect
@@ -50,7 +50,7 @@ describe Introspection do
         pending 'functionality currently broken'
         ancestors = [
           Object,
-          Introspection,
+          Introspect,
           PP::ObjectMixin,
           Kernel,
           BasicObject
