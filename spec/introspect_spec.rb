@@ -1,5 +1,5 @@
 require_relative 'spec_helper'
-require 'introspection'
+require 'introspect'
 
 describe Introspect do
   specify { Introspect.should be_a(Module) }
