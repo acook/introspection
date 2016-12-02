@@ -12,7 +12,7 @@ describe Introspect do
   describe :introspect do
     context 'on classes' do
       before do
-        class Foo; include Introspect; end
+        class Foo; extend Introspect; end
         @klass = Foo
         @results = @klass.introspect
       end
@@ -24,7 +24,6 @@ describe Introspect do
       it 'gives the object heirarchy from the caller up to BasicObject' do
         ancestors = [
           Object,
-          Introspect,
           PP::ObjectMixin,
           Kernel,
           BasicObject
