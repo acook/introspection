@@ -1,5 +1,5 @@
 #
-# You can do `Object.send :include, Introspection`
+# You can do `Object.send :include, Introspect`
 # Then you can call `.introspect` on anything.
 #
 # The `introspect` method returns a hash with information about the receiver
@@ -9,7 +9,9 @@
 # By default there is no depth limit. Pass in 1 to just get info on the object itself.
 #
 
-module Introspection
+require "introspect/version"
+
+module Introspect
 
   # command handler, this will let me namespace things better later
   def introspect command = nil, arg = nil
@@ -80,5 +82,3 @@ module Introspection
     end.last
   end
 end
-
-Object.send :include, Introspection
