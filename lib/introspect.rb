@@ -17,17 +17,8 @@ module Introspect
   # command handler, this will let me namespace things better later
   def introspect command = nil, opts = nil
     case command
-    when :name then self.introspect_name
     when :contents then Contents.contents self, opts
     else Contents.contents self
-    end
-  end
-
-  def introspect_name
-    if self.kind_of? Module
-      self.methods(false).include?(:inspect) ? self.name : self
-    else
-      self
     end
   end
 end

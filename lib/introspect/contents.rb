@@ -21,7 +21,7 @@ class Introspect::Contents
         if object.respond_to?(:contents) && (depth == 0 || depth > 1) then
           @constants << object.contents(depth == 0 ? 0 : depth - 1)
         else
-          @constants << object.introspect(:name)
+          @constants << nameof(object)
         end
       end
 
@@ -45,6 +45,14 @@ class Introspect::Contents
     structure[:methods] = @methods unless @methods.nil? || @methods.empty?
     structure[:instance_methods] = @instance_methods unless @instance_methods.nil? || @instance_methods.empty?
 
-    {@object.introspect(:name) => structure}
+    {nameof(@object) => structure}
+  end
+
+  def nameof obj
+    if obj.kind_of? Module
+      obj.methods(false).include?(:inspect) ? obj.name : obj
+    else
+      obj
+    end
   end
 end
