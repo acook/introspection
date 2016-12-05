@@ -16,8 +16,8 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
   end
-  gem.executables   = gem.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  gem.bindir        = 'bin'
+  gem.executables   = gem.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  gem.bindir        = 'exe'
   gem.require_paths = ['lib']
 
   gem.add_development_dependency 'bundler'
