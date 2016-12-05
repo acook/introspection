@@ -17,7 +17,7 @@ module Introspect
   # command handler, this will let me namespace things better later
   def introspect command = nil, opts = nil
     case command
-    when :which then Introspect::Which.which self
+    when :which then Introspect::Which.which self, opts
     else Introspect::Contents.contents self, opts
     end
   end
