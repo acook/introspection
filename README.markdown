@@ -42,7 +42,6 @@ output
             Enumerable,
             Object,
             PP::ObjectMixin,
-            Introspect::Which,
             Introspect,
             Kernel,
             BasicObject
