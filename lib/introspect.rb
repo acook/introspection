@@ -11,14 +11,19 @@
 
 require 'introspect/version'
 require 'introspect/contents'
+require 'introspect/which'
 
 module Introspect
-
-  # command handler, this will let me namespace things better later
-  def introspect command = nil, opts = nil
+  def self.introspect obj, command = nil, opts = nil
     case command
-    when :which then Introspect::Which.which self, opts
-    else Introspect::Contents.contents self, opts
+    when :which then Introspect::Which.which obj, opts
+    when :contents then  Introspect::Contents.contents obj, opts
+    else
+      raise ArgumentError, "unrecognized command: #{command}"
     end
+  end
+
+  def introspect command = nil, opts = nil
+    Introspect.introspect self, command, opts
   end
 end
