@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{Makes digging deeper into Ruby objects easier.}
   gem.summary       = %q{A tool to examine your Ruby environment.}
   gem.homepage      = 'http://github.com/acook/introspect'
+  gem.license       = 'Apache-2.0'
 
   gem.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
