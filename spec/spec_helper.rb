@@ -1,7 +1,13 @@
-$: << File.join(File.dirname(__FILE__), '/../lib')
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'bundler'
 Bundler.require(:test)
+
+RSpec.configure do |config|
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
+end
 
 def run(*args)
   output = Struct.new(:pid, :stdout, :stderr)
